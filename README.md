@@ -13,11 +13,14 @@ DPS simulation engine for Dragalia Lost with GUI. A work in progress.
 - Sliders to adjust permanent facility levels
   - Permanent facility means things like dojos, altars, and slime statues.
 - Run count
+- Proper overdrive and break state simulation with modifiers on defense.
 
 ## What needs work
 - Accurate frame data for sword combos that are not C3FS, C4FS, C5FS, and plain C5
 - Possible rounding errors
 - Performance (this simulator is very slow to run for accurate results)
+  - Multithreading will improve this as each simulation instance can be considered as self-contained
+- Split out data for adventurer/dragon/wyrmprint to outside the main code for maintenance
 
 ## What's not implemented
 - Other weapon classes and adventurers
@@ -28,10 +31,11 @@ DPS simulation engine for Dragalia Lost with GUI. A work in progress.
 - Afflictions
 - Bleeding damage
 - Punishers and killer state
-  - As neither afflictions nor bleeding is implemented, punishers do not operate.
+  - As neither afflictions nor bleeding is implemented, most punishers do not operate.
+  - Overdrive and Broken Punisher will likely be implemented first, followed by others.
 - Dragon form
 - The Dragon Claws ability
-  - As dragon form is not simulated at all for the time being, in the interests of accuracy (due to highly varying amounts of dragon gauge prep and gain rate in quests, Dragon Claws is not included in the simulation numbers.
+  - As dragon form is not simulated at all for the time being, in the interests of accuracy (due to highly varying amounts of dragon gauge prep and gain rate in quests), Dragon Claws is not included in the simulation numbers.
 - Dracolith
   - As dragon form is not simulated at all for the time being, these will remain unimplemented.
 - Dragon Haste, and Shapeshifting Boost co-abilities
@@ -44,6 +48,8 @@ DPS simulation engine for Dragalia Lost with GUI. A work in progress.
 - Attack uptime
   - This will inflate DPS numbers against enemies that aren't a DPS sandbag or Fafnir Roy III (which is a glorified DPS sandbag)
   - Expect actual DPS numbers against a moving enemy to be around half or lower.
+- Percentage-based overdrive and break state
+  - This causes a lot more assumptions that I'm not personally comfortable with, as quest content have the time spent in OD and Break vary greatly, with the advent of bosses that have pseudo-permanent OD states (e.g. Chronos Nyx) and both very short (e.g. Chronos Nyx) and permanent (Veronica) break states.
 
 ## On the default setup
 Resounding Rendition, Jewels of the Sun, and Konohana Sakuya are set as default equipment for Euden.
